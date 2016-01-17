@@ -23,5 +23,6 @@ namespace MichalZawadzkiLab66.Services
         void AddUser(User user);
         void AddDriver(Driver driver);
         void UpdateOrder(Order order);
+        List<Order> GetOrdersByUserId(int id);
     }
 }

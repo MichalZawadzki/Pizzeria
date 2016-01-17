@@ -5,21 +5,25 @@ using System.Web;
 using System.Web.Mvc;
 using MichalZawadzkiLab66.Models;
 using MichalZawadzkiLab66.Services;
+using Microsoft.AspNet.Identity;
 
 namespace MichalZawadzkiLab66.Controllers
 {
     public class OrderController : Controller
     {
         private IApplicationService _applicationService;
+        private IAuthenticationService _authenticationService;
         public OrderController()
         {
             _applicationService = new ApplicationService();
+            _authenticationService = new AuthenticationService();
         }
 
         [HttpGet]
         public ActionResult OrderList()
         {
-            var orders = _applicationService.GetAllOrders();
+            var userId = _authenticationService.GetUserIdFromRequest(Request);
+            var orders = _applicationService.GetOrdersByUserId(userId);
             return View(orders);
         }
 
@@ -33,8 +37,10 @@ namespace MichalZawadzkiLab66.Controllers
         [HttpPost]
         public ActionResult TakeOrder(TakeOrderViewModel orderViewModel)
         {
-            _applicationService.AddOrder(orderViewModel);
-            return RedirectToAction("Index", "Home");
+            var userId = _authenticationService.GetUserIdFromRequest(Request);
+            _applicationService.AddOrder(orderViewModel, userId);
+            var orders = _applicationService.GetOrdersByUserId(userId);
+            return View("OrderList", orders);
         }
 
         [HttpGet]
@@ -43,7 +49,11 @@ namespace MichalZawadzkiLab66.Controllers
             var orders = _applicationService.GetAllOrders();
             return View(orders);
         }
-
+        /// <summary>
+        /// Niestety czasami dwie ponizsze metody nie dostaja odpowiedniego id, wiec zmieniaja statusy zlych zamowien, nie wiem gdzie blad
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult ChangeOrderToJedzie(string orderId)
         {

@@ -7,6 +7,9 @@ using MichalZawadzkiLab66.Models;
 
 namespace MichalZawadzkiLab66.Services
 {
+    /// <summary>
+    /// Metody te same co w applicationService tylko ze dzialaja bezposrednio na bazie i to jest ich jedyne zadanie
+    /// </summary>
     public class DataBaseService : IDataBaseService
     {
         private PizzaStoreDbContext context;
@@ -15,7 +18,7 @@ namespace MichalZawadzkiLab66.Services
         {
             context = new PizzaStoreDbContext();
         }
-
+        
         public void AddOrder(Order order)
         {
             context.Orders.Add(order);
@@ -101,6 +104,13 @@ namespace MichalZawadzkiLab66.Services
         {
             context.Orders.AddOrUpdate(order);
             context.SaveChanges();
+        }
+
+
+        public List<Order> GetOrdersByUserId(int userId)
+        {
+            var userOrders = context.Orders.Where(x => x.UserId == userId).ToList();
+            return userOrders;
         }
     }
 }

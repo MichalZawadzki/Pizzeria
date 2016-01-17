@@ -17,5 +17,6 @@ namespace MichalZawadzkiLab66.Services
         void SignIn(ClaimsIdentity identity, HttpRequestBase request);
         IAuthenticationManager GetAuthManager(HttpRequestBase request);
         void SignOut(HttpRequestBase request);
+        string GetUserIdFromRequest(HttpRequestBase request);
     }
 }

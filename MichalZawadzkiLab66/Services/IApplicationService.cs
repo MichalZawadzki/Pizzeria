@@ -10,7 +10,7 @@ namespace MichalZawadzkiLab66.Services
     public interface IApplicationService
     {
         TakeOrderViewModel GetTakeOrderViewModel();
-        void AddOrder(TakeOrderViewModel order);
+        void AddOrder(TakeOrderViewModel order, string id);
         List<Pizza> GetAllPizzas();
         Pizza GetPizzaById(int id);
         List<Order> GetAllOrders();
@@ -22,5 +22,6 @@ namespace MichalZawadzkiLab66.Services
         Driver GetDriverByEmail(string email);
         void CreateUser(RegisterModel model);
         void ChangeOrderStatus(string orderId, Status status);
+        List<Order> GetOrdersByUserId(string id);
     }
 }
