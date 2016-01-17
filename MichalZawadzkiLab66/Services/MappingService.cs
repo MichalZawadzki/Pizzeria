@@ -37,5 +37,18 @@ namespace MichalZawadzkiLab66.Services
             };
             return takeOrderViewModel;
         }
+
+
+        public User MapToUser(RegisterModel registerModel)
+        {
+            var user = new User(){Email = registerModel.Email, Name = registerModel.Name, Password = registerModel.Password};
+            return user;
+        }
+
+        public Driver MapToDriver(RegisterModel registerModel)
+        {
+            var driver = new Driver() { Email = registerModel.Email, Name = registerModel.Name, Password = registerModel.Password };
+            return driver;
+        }
     }
 }

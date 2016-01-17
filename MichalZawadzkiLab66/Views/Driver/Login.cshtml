@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-default">
+    @using (Html.BeginForm("Login", "Driver"))
+    {
+        @Html.EditorForModel()
+        <p>
+            <button type="submit" class="btn">Login &raquo;</button>
+        </p>
+    }
+</div>

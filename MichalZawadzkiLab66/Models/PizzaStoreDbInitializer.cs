@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
@@ -24,9 +25,15 @@ namespace MichalZawadzkiLab66.Models
                 new Order(){Address = "Zaporoska 27", Date = new DateTime(2016, 1, 17, 15, 22, 11), Name = "Jacek", PhoneNumber = "123333222", Surname = "Furtka", PizzaId = 3, Pizza = pizzas[3], Status = Status.Jedzie},
                 new Order(){Address = "Mickiewicza 3", Date = new DateTime(2016, 1, 17, 16, 12, 11), Name = "Kasia", PhoneNumber = "222322322", Surname = "Cyc", PizzaId = 1, Pizza = pizzas[1], Status = Status.Dostarczona}
             };
+            User user = new User(){Email = "u@u.pl", Name = "u", Password = "u"};
+            Driver driver = new Driver() { Email = "d@d.pl", Name = "d", Password = "d" };
+            context.Drivers.Add(driver);
+            context.Users.Add(user);
             context.Pizzas.AddRange(pizzas);
             context.Orders.AddRange(orders);
+            
             context.SaveChanges();
+            
             base.Seed(context);
         }
     }

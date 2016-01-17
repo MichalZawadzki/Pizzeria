@@ -66,5 +66,25 @@ namespace MichalZawadzkiLab66.Services
         {
             _dataBaseService.RemovePizzaById(id);
         }
+
+
+        public User GetUserByEmail(string email)
+        {
+            var user = _dataBaseService.GetUserByEmail(email);
+            return user;
+        }
+
+        public Driver GetDriverByEmail(string email)
+        {
+            var driver = _dataBaseService.GetDriverByEmail(email);
+            return driver;
+        }
+
+
+        public void CreateUser(RegisterModel model)
+        {
+            var user = _mappingService.MapToUser(model);
+            _dataBaseService.AddUser(user);
+        }
     }
 }

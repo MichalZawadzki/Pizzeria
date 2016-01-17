@@ -70,5 +70,30 @@ namespace MichalZawadzkiLab66.Services
             context.Pizzas.Remove(pizzaToDelete);
             context.SaveChanges();
         }
+
+
+        public User GetUserByEmail(string email)
+        {
+            var user = context.Users.FirstOrDefault(u => u.Email == email);
+            return user;
+        }
+
+        public Driver GetDriverByEmail(string email)
+        {
+            var driver = context.Drivers.FirstOrDefault(d => d.Email == email);
+            return driver;
+        }
+        
+        public void AddUser(User user)
+        {
+            context.Users.Add(user);
+            context.SaveChanges();
+        }
+
+        public void AddDriver(Driver driver)
+        {
+            context.Drivers.Add(driver);
+            context.SaveChanges();
+        }
     }
 }

@@ -3,6 +3,12 @@
     ViewBag.Title = "Home Page";
 }
 
+@if (!Request.IsAuthenticated)
+{
+    @Html.ActionLink("Log as Client", "Login", "User", null, new {@class = "btn btn-lg"})<br/>
+    @Html.ActionLink("Register as Client", "Register", "User", null, new {@class = "btn btn-lg"})<br/>
+    @Html.ActionLink("Log as Driver", "Login", "Driver", null, new {@class = "btn btn-lg"})<br/>
+}
 <div class="jumbotron">
     Nasze menu
     <table class="table table-bordered table-hover">

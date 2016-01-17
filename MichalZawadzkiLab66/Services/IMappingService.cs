@@ -13,5 +13,7 @@ namespace MichalZawadzkiLab66.Services
         Order MapToOrder(TakeOrderViewModel orderViewModel, Pizza pizza);
         List<SelectListItem> MapToPizzasComboBox(List<Pizza> pizzas);
         TakeOrderViewModel MapToTakeOrderViewModel(List<SelectListItem> pizzasComboBox);
+        User MapToUser(RegisterModel registerModel);
+        Driver MapToDriver(RegisterModel registerModel);
     }
 }

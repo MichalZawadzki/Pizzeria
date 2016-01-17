@@ -18,5 +18,9 @@ namespace MichalZawadzkiLab66.Services
         void AddPizza(Pizza pizza);
         void RemovePizzaByPizza(Pizza pizza);
         void RemovePizzaById(int id);
+        User GetUserByEmail(string email);
+        Driver GetDriverByEmail(string email);
+        void AddUser(User user);
+        void AddDriver(Driver driver);
     }
 }

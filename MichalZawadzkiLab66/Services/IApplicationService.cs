@@ -18,5 +18,8 @@ namespace MichalZawadzkiLab66.Services
         void UpdatePizza(Pizza pizza);
         void AddPizza(Pizza pizza);
         void RemovePizzaById(int id);
+        User GetUserByEmail(string email);
+        Driver GetDriverByEmail(string email);
+        void CreateUser(RegisterModel model);
     }
 }
