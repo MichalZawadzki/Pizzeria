@@ -86,5 +86,14 @@ namespace MichalZawadzkiLab66.Services
             var user = _mappingService.MapToUser(model);
             _dataBaseService.AddUser(user);
         }
+
+
+        public void ChangeOrderStatus(string orderId, Status status)
+        {
+            var id = Int32.Parse(orderId);
+            var order = GetOrderById(id);
+            order.Status = status;
+            _dataBaseService.UpdateOrder(order);
+        }
     }
 }

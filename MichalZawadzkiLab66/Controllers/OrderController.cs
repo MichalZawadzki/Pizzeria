@@ -36,5 +36,28 @@ namespace MichalZawadzkiLab66.Controllers
             _applicationService.AddOrder(orderViewModel);
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpGet]
+        public ActionResult DriverOrderList()
+        {
+            var orders = _applicationService.GetAllOrders();
+            return View(orders);
+        }
+
+        [HttpPost]
+        public ActionResult ChangeOrderToJedzie(string orderId)
+        {
+            _applicationService.ChangeOrderStatus(orderId, Status.Jedzie);
+            var orders = _applicationService.GetAllOrders();
+            return View("DriverOrderList", orders);
+        }
+
+        [HttpPost]
+        public ActionResult ChangeOrderToDostarczona(string orderId)
+        {
+            _applicationService.ChangeOrderStatus(orderId, Status.Dostarczona);
+            var orders = _applicationService.GetAllOrders();
+            return View("DriverOrderList", orders);
+        }
 	}
 }

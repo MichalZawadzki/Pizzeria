@@ -3,25 +3,29 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<a href="/Pizza/Add" class="btn btn-lg btn-success" style="margin-bottom: 20px">Dodaj pizze</a>
     <table class="table table-bordered table-hover">
         <tr>
             <th>Nazwa</th>
             <th>Cena</th>
             <th>Składniki</th>
+            <th>Akcje</th>
         </tr>
         @foreach (var pizza in Model)
         {
             <tr>
                 <td>@pizza.Name</td>
-                <td>@pizza.Price</td>
+                <td>@pizza.Price zł</td>
                 <td>@pizza.Components</td>
                 <td>
-                    <a class="btn btn-danger" href="/Pizza/Delete/@pizza.Id">Usuń</a>
-                    <a class="btn btn-danger" href="/Pizza/Edit/@pizza.Id">Edytuj</a>
+                    <div class="col-sm-6">
+                        <a class="btn btn-danger btn-block" href="/Pizza/Delete/@pizza.Id">Usuń</a>
+                    </div>
+                    <div class="col-sm-6">
+                        <a class="btn btn-info btn-block" href="/Pizza/Edit/@pizza.Id">Edytuj</a>
+                    </div>
                 </td>
             </tr>
         }
     </table>
-    <a href="/Pizza/Add" class="btn btn-success"><span class="glyphicon glyphicon-plus">Dodaj pizze</span></a>
-</div>
+    

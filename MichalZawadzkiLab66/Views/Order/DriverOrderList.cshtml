@@ -1,0 +1,113 @@
+﻿@using System.Diagnostics.Eventing.Reader
+@using MichalZawadzkiLab66.Models
+@model List<MichalZawadzkiLab66.Models.Order>
+
+@{
+    ViewBag.Title = "OrderList";
+}
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Adres</th>
+        <th>Telefon</th>
+        <th>Pizza</th>
+        <th>Data zamówienia</th>
+        <th>Status</th>
+        <th>Zmień status</th>
+    </tr>
+    @foreach (var order in Model)
+    {
+        if (order.Status == Status.Dostarczona)
+        {
+            <tr class="success">
+            <td>@order.Name</td>
+            <td>@order.Surname</td>
+            <td>@order.Address</td>
+            <td>@order.PhoneNumber</td>
+            <td>@order.Pizza.Name</td>
+            <td>@order.Date</td>
+            <td>@order.Status.ToString()</td>
+            <td>
+                @if (@order.Status == Status.Zamowiona)
+                {
+                    using (Html.BeginForm("ChangeOrderToJedzie", "Order"))
+                    {
+                        @Html.Hidden("orderId", order.Id)
+                        <button style="float: right" type="submit" class="btn btn-lg btn-warning btn-block">Jedzie</button>
+                    }
+                }
+                @if (@order.Status == Status.Jedzie)
+                {
+                    using (Html.BeginForm("ChangeOrderToDostarczona", "Order"))
+                    {
+                        @Html.Hidden("orderId", order.Id)
+                        <button style="float: right" type="submit" class="btn btn-lg btn-success btn-block">Dostarczona</button>
+                    }
+                }
+            </td>
+        </tr>
+        }
+        else if (order.Status == Status.Jedzie)
+        {
+            <tr class="warning">
+            <td>@order.Name</td>
+            <td>@order.Surname</td>
+            <td>@order.Address</td>
+            <td>@order.PhoneNumber</td>
+            <td>@order.Pizza.Name</td>
+            <td>@order.Date</td>
+            <td>@order.Status.ToString()</td>
+            <td>
+                @if (@order.Status == Status.Zamowiona)
+                {
+                    using (Html.BeginForm("ChangeOrderToJedzie", "Order"))
+                    {
+                        @Html.Hidden("orderId", order.Id)
+                        <button style="float: right" type="submit" class="btn btn-lg btn-warning btn-block">Jedzie</button>
+                    }
+                }
+                @if (@order.Status == Status.Jedzie)
+                {
+                    using (Html.BeginForm("ChangeOrderToDostarczona", "Order"))
+                    {
+                        @Html.Hidden("orderId", order.Id)
+                        <button style="float: right" type="submit" class="btn btn-lg btn-success btn-block">Dostarczona</button>
+                    }
+                }
+            </td>
+        </tr>
+        }
+        else if( order.Status == Status.Zamowiona)
+        {
+            <tr class="danger">
+            <td>@order.Name</td>
+            <td>@order.Surname</td>
+            <td>@order.Address</td>
+            <td>@order.PhoneNumber</td>
+            <td>@order.Pizza.Name</td>
+            <td>@order.Date</td>
+            <td>@order.Status.ToString()</td>
+            <td>
+                @if (@order.Status == Status.Zamowiona)
+                {
+                    using (Html.BeginForm("ChangeOrderToJedzie", "Order"))
+                    {
+                        @Html.Hidden("orderId", order.Id)
+                        <button style="float: right" type="submit" class="btn btn-lg btn-warning btn-block">Jedzie</button>
+                    }
+                }
+                @if (@order.Status == Status.Jedzie)
+                {
+                    using (Html.BeginForm("ChangeOrderToDostarczona", "Order"))
+                    {
+                        @Html.Hidden("orderId", order.Id)
+                        <button style="float: right" type="submit" class="btn btn-lg btn-success btn-block">Dostarczona</button>
+                    }
+                }
+            </td>
+        </tr>
+        }
+    }
+</table>

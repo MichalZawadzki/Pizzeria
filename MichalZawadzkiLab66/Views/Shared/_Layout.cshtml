@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="position: relative">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,9 +21,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Manage pizzas", "ManagePizzas", "Pizza")</li>
-                    <li>@Html.ActionLink("Take an order", "TakeOrder", "Order")</li>
-                    <li>@Html.ActionLink("Order list", "OrderList", "Order")</li>
+                    @if (User.IsInRole("User"))
+                    {
+                        <li>@Html.ActionLink("Twoje zamówienia", "OrderList", "Order")</li>
+                        <li>@Html.ActionLink("Złóż zamówenie", "TakeOrder", "Order")</li>
+                    }
+                    @if (User.IsInRole("Driver"))
+                    {
+                        <li>@Html.ActionLink("Zarządzaj pizzami", "ManagePizzas", "Pizza")</li>
+                        <li>@Html.ActionLink("Zamówienia", "DriverOrderList", "Order")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,7 +40,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Michał Zawadzki</p>
         </footer>
     </div>
 

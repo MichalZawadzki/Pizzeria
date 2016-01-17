@@ -3,22 +3,18 @@
 {
     using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    //@Html.AntiForgeryToken()
-
-    <ul class="nav navbar-nav navbar-right">
-        <span>Zalogowany, @User.Identity.Name</span>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="text-success"><a>Zalogowany, @User.Identity.Name</a></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
     }
 }
 @if (User.IsInRole("Driver"))
 {
     using (Html.BeginForm("Logout", "Driver", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-        //@Html.AntiForgeryToken()
-
         <ul class="nav navbar-nav navbar-right">
-            <span>Zalogowany, @User.Identity.Name</span>
+            <li class="text-success"><a>Zalogowany, @User.Identity.Name</a></li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>
     }

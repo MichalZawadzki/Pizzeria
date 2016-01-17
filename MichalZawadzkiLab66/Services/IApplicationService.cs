@@ -21,5 +21,6 @@ namespace MichalZawadzkiLab66.Services
         User GetUserByEmail(string email);
         Driver GetDriverByEmail(string email);
         void CreateUser(RegisterModel model);
+        void ChangeOrderStatus(string orderId, Status status);
     }
 }

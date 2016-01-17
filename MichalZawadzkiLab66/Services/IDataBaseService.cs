@@ -22,5 +22,6 @@ namespace MichalZawadzkiLab66.Services
         Driver GetDriverByEmail(string email);
         void AddUser(User user);
         void AddDriver(Driver driver);
+        void UpdateOrder(Order order);
     }
 }

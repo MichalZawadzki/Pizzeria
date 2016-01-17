@@ -95,5 +95,12 @@ namespace MichalZawadzkiLab66.Services
             context.Drivers.Add(driver);
             context.SaveChanges();
         }
+
+
+        public void UpdateOrder(Order order)
+        {
+            context.Orders.AddOrUpdate(order);
+            context.SaveChanges();
+        }
     }
 }

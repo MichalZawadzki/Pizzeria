@@ -5,25 +5,33 @@
 
 @if (!Request.IsAuthenticated)
 {
-    @Html.ActionLink("Log as Client", "Login", "User", null, new {@class = "btn btn-lg"})<br/>
-    @Html.ActionLink("Register as Client", "Register", "User", null, new {@class = "btn btn-lg"})<br/>
-    @Html.ActionLink("Log as Driver", "Login", "Driver", null, new {@class = "btn btn-lg"})<br/>
+    <div class="row">
+        <div class="col-lg-4">
+            @Html.ActionLink("Log as Client", "Login", "User", null, new { @class = "btn btn-success btn-lg btn-block" })
+        </div>
+        <div class="col-lg-4">
+            @Html.ActionLink("Register as Client", "Register", "User", null, new { @class = "btn btn-info btn-lg btn-block" })
+        </div>
+        <div class="col-lg-4">
+            @Html.ActionLink("Log as Driver", "Login", "Driver", null, new { @class = "btn btn-primary btn-lg btn-block" })
+        </div>
+    </div>
+    
 }
-<div class="jumbotron">
-    Nasze menu
-    <table class="table table-bordered table-hover">
-        <tr>
-            <th>Nazwa</th>
-            <th>Cena</th>
-            <th>Składniki</th>
-        </tr>
-        @foreach (var pizza in Model)
-        {
+<div class="panel panel-default" style="margin-top: 30px">
+        <table class="table table-bordered table-hover">
             <tr>
-                <td>@pizza.Name</td>
-                <td>@pizza.Price zł</td>
-                <td>@pizza.Components</td>
+                <th>Nazwa</th>
+                <th>Cena</th>
+                <th>Składniki</th>
             </tr>
-        }
-    </table>
+            @foreach (var pizza in Model)
+            {
+                <tr>
+                    <td>@pizza.Name</td>
+                    <td>@pizza.Price zł</td>
+                    <td>@pizza.Components</td>
+                </tr>
+            }
+        </table>
 </div>
