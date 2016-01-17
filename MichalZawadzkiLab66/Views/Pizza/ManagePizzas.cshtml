@@ -1,0 +1,27 @@
+﻿@model List<MichalZawadzkiLab66.Models.Pizza>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Składniki</th>
+        </tr>
+        @foreach (var pizza in Model)
+        {
+            <tr>
+                <td>@pizza.Name</td>
+                <td>@pizza.Price</td>
+                <td>@pizza.Components</td>
+                <td>
+                    <a class="btn btn-danger" href="/Pizza/Delete/@pizza.Id">Usuń</a>
+                    <a class="btn btn-danger" href="/Pizza/Edit/@pizza.Id">Edytuj</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a href="/Pizza/Add" class="btn btn-success"><span class="glyphicon glyphicon-plus">Dodaj pizze</span></a>
+</div>

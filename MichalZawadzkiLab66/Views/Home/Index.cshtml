@@ -1,0 +1,23 @@
+﻿@model List<MichalZawadzkiLab66.Models.Pizza>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    Nasze menu
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Składniki</th>
+        </tr>
+        @foreach (var pizza in Model)
+        {
+            <tr>
+                <td>@pizza.Name</td>
+                <td>@pizza.Price zł</td>
+                <td>@pizza.Components</td>
+            </tr>
+        }
+    </table>
+</div>

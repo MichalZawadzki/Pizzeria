@@ -1,0 +1,31 @@
+﻿@model List<MichalZawadzkiLab66.Models.Order>
+
+@{
+    ViewBag.Title = "OrderList";
+}
+
+<div class="jumbotron">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>a
+            <th>Adres</th>
+            <th>Telefon</th>
+            <th>Pizza</th>
+            <th>Data zamówienia</th>
+            <th>Status</th>
+        </tr>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.Name</td>
+                <td>@order.Surname</td>
+                <td>@order.Address</td>
+                <td>@order.PhoneNumber</td>
+                <td>@order.Pizza.Name</td>
+                <td>@order.Date</td>
+                <td>@order.Status.ToString()</td>
+            </tr>
+        }
+    </table>
+</div>
