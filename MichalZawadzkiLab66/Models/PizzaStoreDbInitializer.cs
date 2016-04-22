@@ -7,9 +7,6 @@ using System.Web;
 
 namespace MichalZawadzkiLab66.Models
 {
-    /// <summary>
-    /// Czasami lubi wyrzocac blad ze nie moze dodac bazy bo plik .mdf juz istnieje, wystarczy usunac recznie plik, nie wiem jak rozwiazac ten problem
-    /// </summary>
     public class PizzaStoreDbInitializer : DropCreateDatabaseAlways<PizzaStoreDbContext>
     {
         protected override void Seed(PizzaStoreDbContext context)
